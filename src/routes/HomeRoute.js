@@ -1,6 +1,10 @@
+const {
+    HomeRouteGetController,
+} = require("../controllers/HomeRouteController");
+
 const router = require("express").Router();
 
-router.get("/");
+router.get("/", HomeRouteGetController);
 
 module.exports = {
     path: "/",
