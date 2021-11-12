@@ -1,9 +1,8 @@
 const { HomeGetController } = require("../controllers/HomeRouteController");
-const userMiddleware = require("../middlewares/userMiddleware");
 
 const router = require("express").Router();
 
-router.get("/", userMiddleware, HomeGetController);
+router.get("/", HomeGetController);
 
 module.exports = {
     path: "/",

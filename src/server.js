@@ -6,6 +6,7 @@ const cookieParser = require("cookie-parser");
 const postgres = require("./modules/pg/postgres");
 const databaseMiddleware = require("./middlewares/databaseMiddleware");
 const routes = require("./routes/routes");
+const userMiddleware = require("./middlewares/userMiddleware");
 const PORT = process.env.PORT || 3000;
 
 async function server(mode) {
@@ -23,8 +24,7 @@ async function server(mode) {
 
         if (mode === "dev") app.use(morgan("dev"));
 
-        console.log(db);
-
+        app.use(userMiddleware);
         app.set("view engine", "ejs");
         app.set("views", path.join(__dirname, "views"));
     } catch (error) {

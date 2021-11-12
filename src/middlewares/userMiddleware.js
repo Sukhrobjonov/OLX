@@ -19,7 +19,13 @@ module.exports = async function userMiddleware(req, res, next) {
                 session_id: data.session_id,
             },
             raw: true,
-            include: req.db.users,
+        });
+
+        const user = await req.db.users.findOne({
+            where: {
+                user_id: session.user_id,
+            },
+            raw: true,
         });
 
         if (!session) {
@@ -27,8 +33,14 @@ module.exports = async function userMiddleware(req, res, next) {
             return;
         }
 
-        req.user = session;
-        req.role = session["user.user_role"];
+        if (!user) {
+            next();
+            return;
+        }
+
+        req.user = user;
+        req.role = user.user_role;
+
         next();
     } catch (error) {
         console.log(error);
