@@ -1,4 +1,5 @@
 const { Sequelize } = require("sequelize");
+const UserModel = require("../../models/UserModel");
 
 const sequelize = new Sequelize(process.env.DATABASE_URL, {
     logging: false,
@@ -9,6 +10,9 @@ module.exports = async function postgres() {
         await sequelize.authenticate();
 
         const db = {};
+
+        db.users = await UserModel(sequelize, Sequelize);
+
         return db;
     } catch (error) {
         console.log("DATABASE ERROR:", error);
