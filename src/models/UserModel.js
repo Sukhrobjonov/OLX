@@ -18,5 +18,11 @@ module.exports = async (sequelize, Sequelize) => {
             type: Sequelize.STRING(128),
             allowNull: false,
         },
+
+        user_role: {
+            type: Sequelize.ENUM("admin", "user"),
+            allowNull: false,
+            defaultValue: "user",
+        },
     });
 };

@@ -22,6 +22,8 @@ module.exports = async function postgres() {
 
         await relations(db);
 
+        sequelize.sync({ force: false });
+
         return db;
     } catch (error) {
         console.log("DATABASE ERROR:", error);

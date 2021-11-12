@@ -1,3 +1,6 @@
+const { genHash } = require("../modules/bcrypt");
+const { SignUpValidation } = require("../modules/validations");
+
 module.exports = class UserRouteController {
     static async UserRegistrationGetController(req, res) {
         try {
@@ -17,11 +20,21 @@ module.exports = class UserRouteController {
 
     static async UserRegistrationPostController(req, res) {
         try {
-            console.log(req.body);
-            // const user = await User.create(req.body);
-            // res.redirect("/login");
+            const { name, email, password } = await SignUpValidation(req.body);
+
+            const user = await req.db.users.create({
+                user_name: name,
+                user_email: email,
+                user_password: genHash(password),
+            });
+
+            console.log(user.dataValues);
+
+            res.redirect("/login");
         } catch (error) {
-            console.log(error);
+            res.render("registration", {
+                error,
+            });
         }
     }
 };

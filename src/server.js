@@ -23,6 +23,8 @@ async function server(mode) {
 
         if (mode === "dev") app.use(morgan("dev"));
 
+        console.log(db);
+
         app.set("view engine", "ejs");
         app.set("views", path.join(__dirname, "views"));
     } catch (error) {
