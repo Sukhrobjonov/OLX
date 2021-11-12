@@ -4,7 +4,7 @@ const sequelize = new Sequelize(process.env.DATABASE_URL, {
     logging: false,
 });
 
-module.exports = function postgres() {
+module.exports = async function postgres() {
     try {
         await sequelize.authenticate();
 
