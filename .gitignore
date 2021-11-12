@@ -1,3 +1,4 @@
 package-lock.json
+src/public/uploads/*
 node_modules/
 .env
