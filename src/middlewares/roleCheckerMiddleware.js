@@ -1,6 +1,6 @@
 module.exports = function RoleChacker(role) {
     return function (req, res, next) {
-        if (req.user.role === role) {
+        if (req.role === role) {
             next();
         } else {
             res.redirect("/");

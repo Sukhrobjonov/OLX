@@ -3,6 +3,7 @@ module.exports = class HomeRouteController {
         try {
             res.render("index", {
                 user: req.user,
+                role: req.role,
             });
         } catch (error) {
             console.log(error);

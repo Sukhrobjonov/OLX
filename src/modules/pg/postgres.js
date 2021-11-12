@@ -3,6 +3,7 @@ const AdsModel = require("../../models/AdsModel");
 const CategoryModel = require("../../models/CategoryModel");
 const SessionModel = require("../../models/SessionModel");
 const UserModel = require("../../models/UserModel");
+const init = require("./init");
 const relations = require("./relations");
 
 const sequelize = new Sequelize(process.env.DATABASE_URL, {
@@ -21,6 +22,8 @@ module.exports = async function postgres() {
         db.ads = await AdsModel(sequelize, Sequelize);
 
         await relations(db);
+
+        await init(db);
 
         sequelize.sync({ force: false });
 
