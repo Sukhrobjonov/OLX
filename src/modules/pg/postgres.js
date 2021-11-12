@@ -1,4 +1,5 @@
 const { Sequelize } = require("sequelize");
+const SessionModel = require("../../models/SessionModel");
 const UserModel = require("../../models/UserModel");
 
 const sequelize = new Sequelize(process.env.DATABASE_URL, {
@@ -12,6 +13,7 @@ module.exports = async function postgres() {
         const db = {};
 
         db.users = await UserModel(sequelize, Sequelize);
+        db.sessions = await SessionModel(sequelize, Sequelize);
 
         return db;
     } catch (error) {
