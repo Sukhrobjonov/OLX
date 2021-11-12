@@ -21,17 +21,16 @@ module.exports = async function userMiddleware(req, res, next) {
             raw: true,
         });
 
+        if (!session) {
+            next();
+            return;
+        }
         const user = await req.db.users.findOne({
             where: {
                 user_id: session.user_id,
             },
             raw: true,
         });
-
-        if (!session) {
-            next();
-            return;
-        }
 
         if (!user) {
             next();

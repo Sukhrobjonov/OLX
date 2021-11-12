@@ -66,14 +66,14 @@ module.exports = class Validations {
         }).validateAsync(data);
     }
 
-    static async MessageValidation(data) {
+    static async CreateCategoryValidation(data) {
         return await Joi.object({
-            message_text: Joi.string()
+            category_name: Joi.string()
                 .required()
-                .min(2)
-                .max(1024)
+                .min(4)
+                .max(128)
                 .trim()
-                .error(new Error("Matnda xato bor.")),
+                .error(new Error("Kategoriya nomida xato bor.")),
         }).validateAsync(data);
     }
 };

@@ -11,7 +11,6 @@ module.exports = async (sequelize, Sequelize) => {
         },
         category_photo: {
             type: Sequelize.STRING,
-            defaultValue: "nophoto.png",
             allowNull: false,
         },
     });

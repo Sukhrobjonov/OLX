@@ -23,6 +23,7 @@ module.exports = async (sequelize, Sequelize) => {
         },
         ads_photo: {
             type: Sequelize.STRING,
+            defaultValue: "nophoto.png",
             allowNull: true,
         },
     });
