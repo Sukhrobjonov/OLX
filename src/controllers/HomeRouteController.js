@@ -1,5 +1,5 @@
 module.exports = class HomeRouteController {
-    static async HomeRouteGetController(req, res) {
+    static async HomeGetController(req, res) {
         try {
             res.render("index");
         } catch (error) {
