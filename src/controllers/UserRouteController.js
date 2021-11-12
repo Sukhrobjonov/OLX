@@ -14,4 +14,14 @@ module.exports = class UserRouteController {
             console.log(error);
         }
     }
+
+    static async UserRegistrationPostController(req, res) {
+        try {
+            console.log(req.body);
+            // const user = await User.create(req.body);
+            // res.redirect("/login");
+        } catch (error) {
+            console.log(error);
+        }
+    }
 };
