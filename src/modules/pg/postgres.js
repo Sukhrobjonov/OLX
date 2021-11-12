@@ -7,6 +7,9 @@ const sequelize = new Sequelize(process.env.DATABASE_URL, {
 module.exports = function postgres() {
     try {
         await sequelize.authenticate();
+
+        const db = {};
+        return db;
     } catch (error) {
         console.log("DATABASE ERROR:", error);
     }

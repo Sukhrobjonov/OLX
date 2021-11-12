@@ -25,3 +25,5 @@ async function server(mode) {
         //
     }
 }
+
+module.exports = server;
