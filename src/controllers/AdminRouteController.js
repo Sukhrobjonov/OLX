@@ -3,7 +3,7 @@ module.exports = class AdminRouteController {
         try {
             res.render("admin", {
                 user: req.user,
-                role: req.user,
+                role: req.role,
             });
         } catch (error) {
             console.log(error);

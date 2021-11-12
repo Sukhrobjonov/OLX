@@ -79,4 +79,12 @@ module.exports = class UserRouteController {
             res.render("login", { error });
         }
     }
+
+    static async UserLogoutGetController(req, res) {
+        try {
+            res.clearCookie("token").redirect("/");
+        } catch (error) {
+            console.log(error);
+        }
+    }
 };
