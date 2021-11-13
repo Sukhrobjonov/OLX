@@ -4,6 +4,7 @@ module.exports = class HomeRouteController {
             res.render("index", {
                 user: req.user,
                 role: req.role,
+                categories: await req.db.categories.findAll({ raw: true }),
             });
         } catch (error) {
             console.log(error);

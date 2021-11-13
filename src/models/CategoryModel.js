@@ -8,6 +8,7 @@ module.exports = async (sequelize, Sequelize) => {
         category_name: {
             type: Sequelize.STRING,
             allowNull: false,
+            unique: true,
         },
         category_photo: {
             type: Sequelize.STRING,
