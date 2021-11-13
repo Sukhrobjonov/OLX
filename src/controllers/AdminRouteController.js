@@ -35,7 +35,7 @@ module.exports = class AdminRouteController {
                 category_photo: photo_name,
             });
 
-            res.redirect("/");
+            return res.redirect("/");
         } catch (error) {
             if (error.message === "Validation error") {
                 error = "Error: Bunday Kategoriya mavjud";
@@ -57,7 +57,7 @@ module.exports = class AdminRouteController {
                 where: { category_id },
             });
 
-            res.redirect("/");
+            return res.redirect("/");
         } catch (error) {
             res.render("admin", { error });
         }

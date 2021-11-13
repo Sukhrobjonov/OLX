@@ -125,7 +125,7 @@ module.exports = class AdsRouteController {
                 raw: true,
             });
 
-            res.redirect("/");
+            return res.redirect("/");
         } catch (error) {
             console.log(error);
         }

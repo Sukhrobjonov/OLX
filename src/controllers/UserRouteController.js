@@ -29,7 +29,7 @@ module.exports = class UserRouteController {
                 user_password: genHash(password),
             });
 
-            res.redirect("/users/login");
+            return res.redirect("/users/login");
         } catch (error) {
             if (error.message === "Validation error") {
                 error = "Error: Bu email allaqachon ro'yxatdan o'tgan";

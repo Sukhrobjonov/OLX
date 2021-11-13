@@ -15,9 +15,13 @@ const router = require("express").Router();
 router.get("/registration", UserRegistrationGetController);
 router.get("/login", UserLoginGetController);
 router.get("/logout", UserLogoutGetController);
-router.get("/sessions", UserSessionsGetController);
-router.get("/:user_id", UserProfileGetController);
-router.get("/sessions/delete/:session_id", UserSessionsDeleteController);
+router.get("/sessions", authMiddleware, UserSessionsGetController);
+router.get("/:user_id", authMiddleware, UserProfileGetController);
+router.get(
+    "/sessions/delete/:session_id",
+    authMiddleware,
+    UserSessionsDeleteController
+);
 
 router.post("/registration", UserRegistrationPostController);
 router.post("/login", UserLoginPostController);
