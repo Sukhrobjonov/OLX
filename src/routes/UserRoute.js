@@ -5,6 +5,7 @@ const {
     UserLoginPostController,
     UserLogoutGetController,
     UserProfileGetController,
+    UserSessionsGetController,
 } = require("../controllers/UserRouteController");
 const authMiddleware = require("../middlewares/authMiddleware");
 
@@ -13,6 +14,7 @@ const router = require("express").Router();
 router.get("/registration", UserRegistrationGetController);
 router.get("/login", UserLoginGetController);
 router.get("/logout", UserLogoutGetController);
+router.get("/sessions", UserSessionsGetController);
 router.get("/:user_id", UserProfileGetController);
 
 router.post("/registration", UserRegistrationPostController);

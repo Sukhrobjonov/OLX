@@ -126,4 +126,21 @@ module.exports = class UserRouteController {
             console.log(error);
         }
     }
+
+    static async UserSessionsGetController(req, res) {
+        try {
+            const user_sessions = await req.db.sessions.findAll({
+                where: {
+                    user_id: req.user.user_id,
+                },
+                raw: true,
+            });
+
+            res.render("sessions", {
+                user: req.user,
+                role: req.role,
+                user_sessions,
+            });
+        } catch (error) {}
+    }
 };
