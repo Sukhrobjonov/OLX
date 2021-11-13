@@ -39,7 +39,7 @@ module.exports = class AdsRouteController {
                     ];
 
                 photo.mv(
-                    path.join(__dirname, "..", "public", "img", photo_name)
+                    path.join(__dirname, "..", "public", "uploads", photo_name)
                 );
 
                 const ad = await req.db.ads.create({
@@ -74,6 +74,9 @@ module.exports = class AdsRouteController {
             console.log(error);
             res.render("add_ads", {
                 error,
+                user: req.user,
+                role: req.role,
+                categories: await req.db.categories.findAll({ raw: true }),
             });
         }
     }

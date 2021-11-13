@@ -1,4 +1,4 @@
-<%- include('parts/header') %> <% var error%><%var ads %>
+<%- include('parts/header') %> <% var error%><%var ads =ads||{}%>
 
 <section class="my-4 py-4">
     <div class="container">
@@ -8,8 +8,9 @@
             <div class="row g-0">
                 <div class="col-md-4">
                     <img
-                        src="/public/uploads/<%= ads.ads_photo%>"
+                        src="/uploads/<%= ads.ads_photo%>"
                         class="img-fluid rounded-start"
+                        style=""
                         alt="..."
                     />
                 </div>
@@ -29,7 +30,7 @@
                                 </tr>
                                 <tr>
                                     <td>Narxi</td>
-                                    <td><%=ads.ads_id %> so'm</td>
+                                    <td><%=ads.ads_price %> so'm</td>
                                 </tr>
                                 <tr>
                                     <td>Egasi</td>
@@ -46,11 +47,6 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <a
-                            href="/messages/<%= ads.user_id %>"
-                            class="w-100 d-block btn btn-primary"
-                            >Yozish</a
-                        >
                     </div>
                 </div>
             </div>

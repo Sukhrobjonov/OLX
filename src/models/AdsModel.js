@@ -21,6 +21,10 @@ module.exports = async (sequelize, Sequelize) => {
             type: Sequelize.STRING,
             allowNull: false,
         },
+        ads_price: {
+            type: Sequelize.INTEGER,
+            allowNull: false,
+        },
         ads_photo: {
             type: Sequelize.STRING,
             defaultValue: "nophoto.png",
