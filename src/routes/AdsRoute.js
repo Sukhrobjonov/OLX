@@ -1,6 +1,8 @@
+const { AdsGetController } = require("../controllers/AdsRouteController");
+
 const router = require("express").Router();
 
-router.get("/", HomeGetController);
+router.get("/add", AdsGetController);
 
 module.exports = {
     path: "/ads",

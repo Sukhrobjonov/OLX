@@ -1,4 +1,5 @@
-<%- include('parts/header') %> <% var error%><% var categories %>
+<%- include('parts/header') %> <% var error%><% var categories = categories ||
+[]%>
 
 <section class="my-4 py-4">
     <div class="container">
@@ -12,7 +13,7 @@
                 type="text"
                 class="form-control form-control-lg"
                 name="title"
-                placeholder="Sarlavha (title)"
+                placeholder="Sarlavha"
                 required
             />
             <select
@@ -21,7 +22,9 @@
                 required
             >
                 <% for(let category of categories) {%>
-                <option value="<%= category._id%>"><%= category.name%></option>
+                <option value="<%= category.category_id%>">
+                    <%= category.category_name%>
+                </option>
                 <%}%>
             </select>
             <input
@@ -41,7 +44,7 @@
             />
 
             <input
-                class="dropzone mt-2 w-100"
+                class="form-control form-control-lg mt-2"
                 type="file"
                 name="photos"
                 multiple
