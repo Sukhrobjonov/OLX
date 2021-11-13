@@ -10,7 +10,7 @@ module.exports = class CategoryRouteController {
                 raw: true,
             });
 
-            const category_ads = await req.db.ads.findOne({
+            const category_ads = await req.db.ads.findAll({
                 where: {
                     category_id,
                 },

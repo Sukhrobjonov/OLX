@@ -1,31 +1,30 @@
 <%- include('parts/header') %> <% var category = category||{} %><% var
-category_ads = category_ads||[] %>
+category_ads = category_ads || [] %>
 
 <section class="m-4 p-4">
     <div class="container">
-        <h2 class="text-center"><%= category.name %></h2>
+        <h2 class="text-center mb-4"><%= category.category_name %></h2>
 
-        <div class="row mt-4">
+        <div class="row g-4 mt-2">
             <% for(let ads of category_ads) {%>
-            <div class="col-lg-4 col-md-6">
+            <div class="col-lg-3 col-md-4 col-sm-6">
                 <div class="card text-center" style="flex-grow: 1">
                     <img
-                        src="/public/uploads/<%= ads.photos[0]%>"
+                        src="/uploads/<%= ads.ads_photos%>"
                         class="card-img-top"
                         style="
                             height: 200px;
-                            width: 200px;
-                            object-fit: cover;
+                            object-fit: contain;
                             margin: 0 auto;
                         "
                         alt="..."
                     />
                     <div class="card-body">
                         <a
-                            href="/ads/<%= ads.slug%>"
+                            href="/ads/<%= ads.ads_slug%>"
                             class="btn btn-primary m-0 p-2"
                             ><h5 class="card-title p-0 m-0">
-                                <%= ads.title%>
+                                <%= ads.ads_title%>
                             </h5></a
                         >
                     </div>
