@@ -53,9 +53,7 @@ module.exports = class AdsRouteController {
                     category_id: data.category,
                 });
 
-                res.redirect("/ads/" + slug);
-
-                console.log(ad.dataValues);
+                return res.redirect("/ads/" + slug);
             }
 
             const ad = await req.db.ads.create({
@@ -67,9 +65,8 @@ module.exports = class AdsRouteController {
                 user_id: req.user.user_id,
                 category_id: data.category,
             });
-            console.log(ad.dataValues);
 
-            res.redirect("/ads/" + slug);
+            return res.redirect("/ads/" + slug);
         } catch (error) {
             console.log(error);
             res.render("add_ads", {

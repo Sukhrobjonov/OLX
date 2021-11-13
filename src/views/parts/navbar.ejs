@@ -33,15 +33,10 @@
                     <a
                         class="nav-link m-2"
                         aria-current="page"
-                        href="/users/<%= user._id%>"
+                        href="/users/<%= user.user_id%>"
                         ><%= user.user_name %></a
                     >
                 </li>
-                <!-- <li class="nav-item">
-                    <a class="nav-link m-2" aria-current="page" href="/chat/"
-                        >Chat</a
-                    >
-                </li> -->
                 <li class="nav-item">
                     <a
                         class="nav-link m-2"
@@ -51,12 +46,6 @@
                     >
                 </li>
                 <% } else if(role == 'admin') { %>
-                <!-- <li class="nav-item">
-                    <a class="nav-link m-2" aria-current="page" href="/ads/add"
-                        >E'lon qo'shish</a
-                    >
-                </li> -->
-
                 <li class="nav-item">
                     <a class="nav-link m-2" aria-current="page" href="/admin"
                         >Admin Panel</a

@@ -87,4 +87,43 @@ module.exports = class UserRouteController {
             console.log(error);
         }
     }
+
+    static async UserProfileGetController(req, res) {
+        try {
+            if (!req.user) {
+                return res.redirect("/");
+            }
+            const user_id = req.params.user_id;
+
+            const user = await req.db.users.findOne({
+                where: {
+                    user_id: user_id,
+                },
+                raw: true,
+            });
+
+            if (!user) {
+                return res.redirect("/");
+            }
+
+            const user_ads = await req.db.ads.findAll({
+                where: {
+                    user_id: user_id,
+                },
+                raw: true,
+            });
+
+            const isOwnProfile = req.user.user_id === user.user_id;
+
+            res.render("profile", {
+                user: req.user,
+                role: req.role,
+                profile: user,
+                isOwnProfile,
+                user_ads,
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    }
 };
