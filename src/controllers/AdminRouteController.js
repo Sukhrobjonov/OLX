@@ -43,4 +43,23 @@ module.exports = class AdminRouteController {
             res.render("admin", { error });
         }
     }
+
+    static async DeleteCategoryController(req, res) {
+        try {
+            const { category_id } = req.params;
+            const category = await req.db.categories.findOne({
+                where: { category_id },
+            });
+
+            if (!category) throw new Error("Kategoriya topilmadi");
+
+            await req.db.categories.destroy({
+                where: { category_id },
+            });
+
+            res.redirect("/");
+        } catch (error) {
+            res.render("admin", { error });
+        }
+    }
 };
