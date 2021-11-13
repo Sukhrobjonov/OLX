@@ -6,6 +6,7 @@ const {
     UserLogoutGetController,
     UserProfileGetController,
     UserSessionsGetController,
+    UserSessionsDeleteController,
 } = require("../controllers/UserRouteController");
 const authMiddleware = require("../middlewares/authMiddleware");
 
@@ -16,6 +17,7 @@ router.get("/login", UserLoginGetController);
 router.get("/logout", UserLogoutGetController);
 router.get("/sessions", UserSessionsGetController);
 router.get("/:user_id", UserProfileGetController);
+router.get("/sessions/delete/:session_id", UserSessionsDeleteController);
 
 router.post("/registration", UserRegistrationPostController);
 router.post("/login", UserLoginPostController);

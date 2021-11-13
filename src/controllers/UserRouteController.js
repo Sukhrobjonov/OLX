@@ -143,4 +143,25 @@ module.exports = class UserRouteController {
             });
         } catch (error) {}
     }
+
+    static async UserSessionsDeleteController(req, res) {
+        try {
+            const session_id = req.params.session_id;
+
+            if (!req.user) {
+                return res.redirect("/");
+            }
+
+            await req.db.sessions.destroy({
+                where: {
+                    session_id: session_id,
+                    user_id: req.user.user_id,
+                },
+            });
+
+            res.redirect("/");
+        } catch (error) {
+            console.log(error);
+        }
+    }
 };
