@@ -108,4 +108,29 @@ module.exports = class AdsRouteController {
             console.log(error);
         }
     }
+
+    static async AdsDeleteController(req, res) {
+        try {
+            const ads_id = req.params.ads_id;
+
+            if (!ads_id) {
+                res.redirect("/");
+            }
+
+            const user = req.user;
+
+            if (!user) {
+                res.redirect("/");
+            }
+
+            const ad = await req.db.ads.destroy({
+                where: { ads_id: ads_id, user_id: user?.user_id },
+                raw: true,
+            });
+
+            res.redirect("/");
+        } catch (error) {
+            console.log(error);
+        }
+    }
 };

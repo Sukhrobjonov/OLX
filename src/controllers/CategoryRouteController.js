@@ -22,6 +22,8 @@ module.exports = class CategoryRouteController {
                 category_ads,
                 category,
             });
+
+            console.log(category_ads);
         } catch (error) {
             console.log(error);
         }

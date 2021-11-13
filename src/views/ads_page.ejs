@@ -1,5 +1,10 @@
-<%- include('parts/header') %> <% var error%><%var ads =ads||{}%>
-
+<%- include('parts/header') %> <% var error%><%var ads =ads||{}%><% var user =
+user || "" %>
+<style>
+    img {
+        max-width: 100%;
+    }
+</style>
 <section class="my-4 py-4">
     <div class="container">
         <h1 class="text-center"><%= ads.ads_title%></h1>
@@ -10,7 +15,6 @@
                     <img
                         src="/uploads/<%= ads.ads_photo%>"
                         class="img-fluid rounded-start"
-                        style=""
                         alt="..."
                     />
                 </div>
@@ -47,6 +51,13 @@
                                 </tr>
                             </tbody>
                         </table>
+                        <% if(user.user_id === ads.user_id) {%>
+                        <a
+                            href="/ads/delete/<%= ads.ads_id%>"
+                            class="w-100 d-block btn btn-danger"
+                            >Delete</a
+                        >
+                        <% } %>
                     </div>
                 </div>
             </div>
